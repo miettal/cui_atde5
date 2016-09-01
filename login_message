@@ -1,0 +1,17 @@
+please follow the steps bellow.
+
+[ATDE ~]$ cd atmark-dist
+[ATDE ~/atmark-dist]$ make menuconfig
+...
+[ATDE ~/atmark-dist]$ make
+...
+[ATDE ~/atmark-dist]$ ls images
+linux.bin  linux.bin.gz  romfs.img  romfs.img.gz
+[ATDE ~/atmark-dist]$ sudo cp images/linux.bin.gz /var/lib/tftpboot
+[ATDE ~/atmark-dist]$ sudo cp images/romfs.img.gz /var/lib/tftpboot
+[ATDE ~/atmark-dist]$ ip a
+(start armadillo while pushing sw1)
+[ATDE ~/atmark-dist]$ picocom -b 115200 /dev/ttyUSB0
+hermit>tftpdl Armadillo_IP ATDE_IP --kernel=linux.bin.gz --userland=romfs.img.gz
+...
+completed!!
